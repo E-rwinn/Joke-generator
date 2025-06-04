@@ -6,10 +6,12 @@ let getJoke = () => {
     jokecontainer.classList.remove("fade");
     fetch(url)
     .then(data => data.json())
-    .then(item =>{
-        jokeContainer.textContent = `${item.joke}`;
+    .then(item => {
+        jokecontainer.textContent = `${item.joke}`;
         jokecontainer.classList.add("fade");
-    });
+    })
+    .catch(error => console.error('Error fetching joke:', error));
 }
+
 btn.addEventListener("click", getJoke);
 getJoke();
